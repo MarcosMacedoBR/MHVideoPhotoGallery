@@ -372,11 +372,11 @@
         y += CGRectGetHeight(controller.moviePlayerToolBarTop.frame);
     }
     
-    self.titleView.frame = CGRectMake(10, self.view.frame.size.height - self.titleViewBackground.frame.size.height - self.descriptionView.frame.size.height - size.height, self.view.frame.size.width-20, size.height);
+    self.titleView.frame = CGRectMake(10, self.view.frame.size.height - 44 - self.descriptionViewBackground.frame.size.height - size.height, self.view.frame.size.width-20, size.height);
     //self.titleView.frame = CGRectMake(10, y, self.view.frame.size.width-20, size.height);
     if (self.titleView.text.length >0) {
         //self.titleViewBackground.frame = CGRectMake(0, y, self.view.frame.size.width, size.height);
-        self.titleViewBackground.frame = CGRectMake(0, self.view.frame.size.height - self.titleViewBackground.frame.size.height - self.descriptionView.frame.size.height - size.height, self.view.frame.size.width, size.height);
+        self.titleViewBackground.frame = CGRectMake(0, self.view.frame.size.height - 44 - self.descriptionViewBackground.frame.size.height - size.height, self.view.frame.size.width, size.height);
         self.titleViewBackground.hidden = NO;
     } else {
         self.titleViewBackground.hidden = YES;
@@ -418,8 +418,8 @@
     if (scrollView.contentOffset.x < self.view.frame.size.width/2) {
         pageIndex--;
     }
-    [self updateTitleLabelForIndex:pageIndex];
     [self updateDescriptionLabelForIndex:pageIndex];
+    [self updateTitleLabelForIndex:pageIndex];
     [self updateTitleForIndex:pageIndex];
 }
 
