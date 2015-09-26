@@ -1460,7 +1460,7 @@
 }
 
 -(void)handelImageTap:(UIGestureRecognizer *)gestureRecognizer{
-    if (changeIsLocked) {
+    if (_changeIsLocked) {
         return;
     }
     if (!self.viewController.isHiddingToolBarAndNavigationBar) {
