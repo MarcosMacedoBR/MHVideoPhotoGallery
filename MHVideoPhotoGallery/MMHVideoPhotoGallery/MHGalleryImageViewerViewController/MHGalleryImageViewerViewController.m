@@ -117,6 +117,8 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
+    self.changeIsLocked           = YES;
+    
     self.UICustomization          = self.galleryViewController.UICustomization;
     self.transitionCustomization  = self.galleryViewController.transitionCustomization;
     
@@ -204,6 +206,7 @@
     [self updateToolBarForItem:item];
     
     self.titleViewBackground = [UIToolbar.alloc initWithFrame:CGRectZero];
+    self.titleViewBackground.alpha = 0.4;
     self.titleView = [UITextView.alloc initWithFrame:CGRectZero];
     [self configureTextView:self.titleView];
     self.titleView.text = item.titleString;
@@ -359,6 +362,7 @@
 }
 
 -(void)updateTitleViewSizeAndPosition {
+    //CGSize size = [self.titleView sizeThatFits:CGSizeMake(self.view.frame.size.width-20, 30)];
     CGSize size = [self.titleView sizeThatFits:CGSizeMake(self.view.frame.size.width-20, MAXFLOAT)];
     
     MHGalleryItem *item = [self itemForIndex:self.pageIndex];
@@ -370,9 +374,11 @@
         y += CGRectGetHeight(controller.moviePlayerToolBarTop.frame);
     }
     
-    self.titleView.frame = CGRectMake(10, y, self.view.frame.size.width-20, size.height);
+    self.titleView.frame = CGRectMake(10, self.view.frame.size.height - 150, self.view.frame.size.width-20, size.height);
+    //self.titleView.frame = CGRectMake(10, y, self.view.frame.size.width-20, size.height);
     if (self.titleView.text.length >0) {
-        self.titleViewBackground.frame = CGRectMake(0, y, self.view.frame.size.width, size.height);
+        //self.titleViewBackground.frame = CGRectMake(0, y, self.view.frame.size.width, size.height);
+        self.titleViewBackground.frame = CGRectMake(0, self.view.frame.size.height - 150, self.view.frame.size.width, size.height);
         self.titleViewBackground.hidden = NO;
     } else {
         self.titleViewBackground.hidden = YES;
@@ -1455,6 +1461,9 @@
 }
 
 -(void)handelImageTap:(UIGestureRecognizer *)gestureRecognizer{
+    if (changeIsLocked) {
+        return;
+    }
     if (!self.viewController.isHiddingToolBarAndNavigationBar) {
         if ([gestureRecognizer respondsToSelector:@selector(locationInView:)]) {
             CGPoint tappedLocation = [gestureRecognizer locationInView:self.view];
