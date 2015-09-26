@@ -117,8 +117,6 @@
 -(void)viewDidLoad{
     [super viewDidLoad];
     
-    self.changeIsLocked           = YES;
-    
     self.UICustomization          = self.galleryViewController.UICustomization;
     self.transitionCustomization  = self.galleryViewController.transitionCustomization;
     
@@ -824,6 +822,7 @@
            viewController:(MHGalleryImageViewerViewController*)viewController{
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
+        self.changeIsLocked           = YES;
         
         __weak typeof(self) weakSelf = self;
         

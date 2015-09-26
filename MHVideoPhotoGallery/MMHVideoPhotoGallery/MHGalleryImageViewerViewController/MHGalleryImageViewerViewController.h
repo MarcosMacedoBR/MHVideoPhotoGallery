@@ -37,7 +37,6 @@
 
 @property (nonatomic,getter = isUserScrolling)                   BOOL userScrolls;
 @property (nonatomic,getter = isHiddingToolBarAndNavigationBar)  BOOL hiddingToolBarAndNavigationBar;
-@property (nonatomic)                                            BOOL changeIsLocked;
 
 -(MHGalleryController*)galleryViewController;
 -(void)updateToolBarForItem:(MHGalleryItem*)item;
@@ -65,6 +64,7 @@
 @property (nonatomic,getter = isPausingVideo)        BOOL pausingVideo;
 @property (nonatomic)                                BOOL videoWasPlayable;
 @property (nonatomic)                                BOOL videoDownloaded;
+@property (nonatomic)                                BOOL changeIsLocked;
 
 
 -(void)stopMovie;
